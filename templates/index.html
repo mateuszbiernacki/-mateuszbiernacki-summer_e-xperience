@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>e-xperience</title>
+    </head>
+    <body>
+        <h1>GitHub stars counter</h1>
+        <label>Login:</label>
+        <input type="text" id="user_form">
+        <input type="submit" onclick="myFunction()">
+        <script>
+            function myFunction() {
+                window.location.href="/numbers_of_star/"+document.getElementById("user_form").value;
+            }
+        </script>
+            <h2>{{name}}</h2>
+            <ul>
+                {% for x in content %}
+                    <li>{{x}}</li>
+                {% endfor %}
+            </ul>
+        <h2>{{total_of_stars}}</h2>
+    </body>
+</html>
