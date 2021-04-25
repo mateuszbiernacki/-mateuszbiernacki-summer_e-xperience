@@ -18,7 +18,7 @@ def count_stars_html(user):
     buff = ""
     sum_of_stars = 0
     repos_numbers = 0
-    for page_number in range(int(user_info['public_repos']/100) + 2):
+    for page_number in range(1, int(user_info['public_repos']/100) + 2):
         r = req.get(f'https://api.github.com/users/{user}/repos?page={page_number}&per_page=100')
         list_of_repos = json.loads(r.text)
         for repo in list_of_repos:
@@ -41,7 +41,7 @@ def count_stars_json(user):
     user_info = json.loads(r.text)
     repos_to_stars = {}
     sum_of_stars = 0
-    for page_number in range(int(user_info['public_repos'] / 100) + 2):
+    for page_number in range(1, int(user_info['public_repos'] / 100) + 2):
         r = req.get(f'https://api.github.com/users/{user}/repos?per_page=100&page={page_number}')
         list_of_repos = json.loads(r.text)
         for repo in list_of_repos:
