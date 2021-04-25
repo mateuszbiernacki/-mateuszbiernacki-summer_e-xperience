@@ -35,16 +35,18 @@ def count_stars_html(user):
                            total_of_stars=str(sum_of_stars) + ' total from ' + str(repos_numbers) + ' repos')
 
 
-# TODO check all repos, now it is checking only first page (100 repos)
 @flask_app.route('/json/numbers_of_star/<user>')
 def count_stars_json(user):
-    r = req.get(f'https://api.github.com/users/{user}/repos?per_page=100')
-    list_of_repos = json.loads(r.text)
+    r = req.get(f'https://api.github.com/users/{user}')
+    user_info = json.loads(r.text)
     repos_to_stars = {}
     sum_of_stars = 0
-    for repo in list_of_repos:
-        repos_to_stars[repo['name']] = repo['stargazers_count']
-        sum_of_stars += repo['stargazers_count']
+    for page_number in range(int(user_info['public_repos'] / 100) + 2):
+        r = req.get(f'https://api.github.com/users/{user}/repos?per_page=100&page={page_number}')
+        list_of_repos = json.loads(r.text)
+        for repo in list_of_repos:
+            repos_to_stars[repo['name']] = repo['stargazers_count']
+            sum_of_stars += repo['stargazers_count']
     return json.dumps({'username': user,
                        'list_of_repos': repos_to_stars,
                        'sum_of_stars': sum_of_stars})
