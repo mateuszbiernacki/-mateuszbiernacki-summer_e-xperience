@@ -2,6 +2,7 @@
 Aplikacja zwraca listę repozytoriów (wraz z odpowiadającą liczbą gwiazdek) na podstawie nazwy użytkownika w postaci dokumentu html lub json.
 
 Aplikacja została napisana w języku Python 3.8.
+
 Python 3.8 lub wyższy jest wymagany do poprawnego działania aplikacji.
 
 Zostały wykorzystana następujące frameworki:
