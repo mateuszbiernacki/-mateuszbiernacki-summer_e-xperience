@@ -1,4 +1,4 @@
-# summer_e-xperience
+# GitHub Star Counter
 Aplikacja zwraca listę repozytoriów (wraz z odpowiadającą liczbą gwiazdek) na podstawie nazwy użytkownika w postaci dokumentu html lub json.
 
 Aplikacja została napisana w języku Python 3.8.
